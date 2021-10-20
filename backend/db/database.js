@@ -18,7 +18,6 @@ if(database == 0){
     }
   );
 }else{
-
   if(heroku == 1){ 
     sequelize = new Sequelize(
       process.env.DATABASE, process.env.USER, process.env.PASSWORD, {

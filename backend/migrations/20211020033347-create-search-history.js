@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('SearchHistories', {
+    await queryInterface.createTable('SearchHistory', {
       id_searchHistory: {
         allowNull: false,
         autoIncrement: true,
@@ -12,7 +12,11 @@ module.exports = {
         type: Sequelize.STRING
       },
       id_user: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "User",
+          key: "id_user"
+        }
       },
       createdAt: {
         allowNull: false,
@@ -25,6 +29,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('SearchHistories');
+    await queryInterface.dropTable('SearchHistory');
   }
 };
