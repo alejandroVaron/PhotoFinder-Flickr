@@ -1,6 +1,5 @@
-'use strict';
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../database/db');
+const sequelize = require('../db/database');
 
 class User extends Model {
   static associate(models) {
