@@ -1,7 +1,9 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import urlShortener from 'node-url-shortener';
-import cors from 'cors'
+import cors from 'cors';
+import UserRoutes from './routes/UserRoutes';
+import SearchHistoryRoutes from './routes/SearchHistoryRoutes';
 
 const sequelize = require('../db/database');
 const app = express();
@@ -27,6 +29,8 @@ app.post('/url', function(req, res) {
     });
 });
 
+app.use('/api/user', UserRoutes);
+app.use('/api/searchHistory', SearchHistoryRoutes);
 
 sequelize.sync({ force: false, logging: console.log }).then( () => {
     console.log("¡We connect to the database!");
