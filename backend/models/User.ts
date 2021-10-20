@@ -1,8 +1,8 @@
-const { Model, DataTypes } = require('sequelize');
+import { Model, DataTypes } from 'sequelize';
 const sequelize = require('../db/database');
 
 class User extends Model {
-  static associate(models) {
+  static associate() {
 
   }
 };

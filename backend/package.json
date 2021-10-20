@@ -2,9 +2,12 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index",
+  "typings": "index",
   "scripts": {
-    "start": "nodemon --exec babel-node src/index.js",
+    "dev": "concurrently \"tsc --watch\" \"nodemon --exec babel-node dist/src/index.js\"",
+    "start": "nodemon --exec babel-node src/index",
+    "build": "tsc --watch",
     "deploy": "git push heroku master",
     "postinstall": "patch-package",
     "heroku-postbuild": "patch-package"
@@ -31,6 +34,12 @@
     "@babel/core": "^7.13.15",
     "@babel/node": "^7.13.13",
     "@babel/preset-env": "^7.13.15",
-    "patch-package": "^6.4.7"
+    "@types/node": "^16.11.1",
+    "axios": "^0.23.0",
+    "concurrently": "^6.3.0",
+    "patch-package": "^6.4.7",
+    "ts-node": "^10.3.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.4.4"
   }
 }

@@ -1,7 +1,13 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import urlShortener from 'node-url-shortener';
-import cors from 'cors'
+import cors from 'cors';
+/* @ts-ignore */
+import UserRoutes from './routes/UserRoutes';
+/* @ts-ignore */
+import SearchHistoryRoutes from './routes/SearchHistoryRoutes';
+/* @ts-ignore */
+import ApiRoutes from './routes/ApiRoutes'
 
 const sequelize = require('../db/database');
 const app = express();
@@ -16,16 +22,20 @@ app.use(bodyParser.json());
 app.use(cors())
 
 
-app.get('/', (req, res) => {
+app.get('/', (req: any, res: any) => {
     res.end('¡Welcome!');
 })
 
-app.post('/url', function(req, res) {
+app.post('/url', function(req: any, res: any) {
     const url = req.body.url;
-    urlShortener.short(url, function(err, shortUrl){
+    urlShortener.short(url, function(err: any, shortUrl: any){
         res.send(shortUrl);
     });
 });
+
+app.use('/api/user', UserRoutes);
+app.use('/api/searchHistory', SearchHistoryRoutes);
+app.use('/api/search', ApiRoutes);
 
 
 sequelize.sync({ force: false, logging: console.log }).then( () => {
@@ -33,6 +43,6 @@ sequelize.sync({ force: false, logging: console.log }).then( () => {
     app.listen(port, function(){
         console.log('¡Server up in port '+port+'!');
     });
-}).catch(error => {
+}).catch((error: any) => {
     console.log(error)
 });
