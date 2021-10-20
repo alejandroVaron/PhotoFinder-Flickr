@@ -13,6 +13,9 @@ const UserRoutes_1 = __importDefault(require("./routes/UserRoutes"));
 const SearchHistoryRoutes_1 = __importDefault(require("./routes/SearchHistoryRoutes"));
 /* @ts-ignore */
 const ApiRoutes_1 = __importDefault(require("./routes/ApiRoutes"));
+/* @ts-ignore */
+const AuthRoutes_1 = __importDefault(require("./routes/AuthRoutes"));
+const auth = require('./middleware/AuthJwt');
 const sequelize = require('../db/database');
 const app = (0, express_1.default)();
 var port = process.env.PORT || 3000;
@@ -32,9 +35,14 @@ app.post('/url', function (req, res) {
         res.send(shortUrl);
     });
 });
-app.use('/api/user', UserRoutes_1.default);
-app.use('/api/searchHistory', SearchHistoryRoutes_1.default);
-app.use('/api/search', ApiRoutes_1.default);
+//with this route we start session and it provides us with the jwt
+app.use('/api/', AuthRoutes_1.default);
+//This route requires authentication with jwt
+app.use('/api/user', auth, UserRoutes_1.default);
+//This route requires authentication with jwt
+app.use('/api/searchHistory', auth, SearchHistoryRoutes_1.default);
+//This route requires authentication with jwt
+app.use('/api/search', auth, ApiRoutes_1.default);
 sequelize.sync({ force: false, logging: console.log }).then(() => {
     console.log("¡We connect to the database!");
     app.listen(port, function () {

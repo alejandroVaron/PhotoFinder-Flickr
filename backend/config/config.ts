@@ -18,5 +18,5 @@ module.exports = {
       },
     },
   },
-  llave: "supersecretkeyomg"
+  key: "supersecretkeyomg"
 }

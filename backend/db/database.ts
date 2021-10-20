@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize')
 // @ts-ignore:next-line
-const { development, production } = require('../.././config/config')
+const { development, production } = require('.././config/config')
 var database = 0;   // 0 = Localhost database  ||  1 = Heroku database
 var heroku = 0;
 let sequelizeOb;
