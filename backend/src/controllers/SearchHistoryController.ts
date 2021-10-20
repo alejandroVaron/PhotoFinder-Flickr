@@ -11,7 +11,7 @@ class SearchHistoryController{
             if (allSearchHistories.length > 0) {
                 util.setSuccess(200, 'Search history returned', allSearchHistories)
             } else {
-                util.setSuccess(204, 'No Search history found');
+                util.setSuccess(204, 'No Search history found', "");
             }
             return util.send(res);
         } catch (error) {
@@ -33,18 +33,18 @@ class SearchHistoryController{
     }
 
     static async updateSearchHistoryById(req, res) {
-        const { id } = req.params.id;
+        const id = req.params.id;
         const updateSearchHistory = req.body;
         if (!Number.isInteger(Number(id))) {
             util.setError(400, 'Please input a valid numeric value');
             return util.send(res);
         }
         try {
-            const updatesSearchHistory = await SearchHistoryService.updateUserById(id, updateSearchHistory)
+            const updatesSearchHistory = await SearchHistoryService.updateSearchHistoryById(id, updateSearchHistory)
             if (updatesSearchHistory) {
                 util.setSuccess(201, `Search history ${id} updated!`, updatesSearchHistory);
             } else {
-                util.setSuccess(204, `Could not update Search history ${id}!`)
+                util.setSuccess(204, `Could not update Search history ${id}!`, "")
             }
             return util.send(res);
         } catch (error) {
@@ -54,17 +54,17 @@ class SearchHistoryController{
     }
 
     static async deleteSearchHistoryById(req, res) {
-        const { id } = req.params.id;
+        const id = req.params.id;
         if (!Number.isInteger(Number(id))) {
             util.setError(400, 'Please input a valid numeric value');
             return util.send(res);
         }
         try {
-            const searchHistoryToDelete = await SearchHistoryService.deleteUserById(id);
+            const searchHistoryToDelete = await SearchHistoryService.deleteSearchHistoryById(id);
             if (searchHistoryToDelete) {
                 util.setSuccess(200, `Deleted Search history ${id}!`, searchHistoryToDelete);
             } else {
-                util.setSuccess(204, `The Search history you are looking for can not be found`);
+                util.setSuccess(204, `The Search history you are looking for can not be found`, "");
             }
             return util.send(res);
         } catch (error) {
@@ -76,11 +76,11 @@ class SearchHistoryController{
     static async getSearchHistoryById(req, res) {
         const requiredSearchHistory = req.params.id;
         try {
-            const returnedSearchHistory = await SearchHistoryService.getUserByEmail(requiredSearchHistory)
+            const returnedSearchHistory = await SearchHistoryService.getSearchHistoryById(requiredSearchHistory)
             if (returnedSearchHistory) {
                 util.setSuccess(200, `Search history ${requiredSearchHistory} returned!`, returnedSearchHistory);
             } else {
-                util.setSuccess(204, `Could not found Search history ${requiredSearchHistory}!`);
+                util.setSuccess(204, `Could not found Search history ${requiredSearchHistory}!`, "");
             }
             return util.send(res);
         } catch (error) {

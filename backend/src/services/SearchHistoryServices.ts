@@ -1,4 +1,4 @@
-import SearchHistory from '../../models/Searchhistory'
+const SearchHistory = require('../../models/Searchhistory')
 
 class SearchHistoryService {
 
@@ -20,11 +20,11 @@ class SearchHistoryService {
 
     static async updateSearchHistoryById(id, searchHistoryToUpdate) {
         try {
-          const searchHistoryToUpdate = await SearchHistory.findOne({
+          const searchHistory = await SearchHistory.findOne({
             where: { id_searchHistory: Number(id) }
           });
     
-          if (searchHistoryToUpdate) {
+          if (searchHistory) {
             await SearchHistory.update(searchHistoryToUpdate, { where: { id_searchHistory: Number(id) } });
             return searchHistoryToUpdate;
           }

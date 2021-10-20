@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../db/database');
 
 class SearchHistory extends Model {
-  static associate(models) {
+  static associate() {
   }
 };
 SearchHistory.init({

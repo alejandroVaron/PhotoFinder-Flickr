@@ -1,7 +1,11 @@
 export default class Util {
+    statusCode: null;
+    type: {};
+    data: null;
+    message: null;
     constructor() {
       this.statusCode = null;
-      this.type = null;
+      this.type = '';
       this.data = null;
       this.message = null;
     }
