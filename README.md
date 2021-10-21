@@ -4,4 +4,4 @@ PhotoFinder Flickr es un aplicativo que permite visualizar galerias de imagenes 
 
 Aplicación desplegada en heroku:
 
-https://photofinder-app-frontend.herokuapp.com/login
+https://photofinder-app-frontend.herokuapp.com/
