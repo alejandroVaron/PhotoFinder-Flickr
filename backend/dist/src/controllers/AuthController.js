@@ -10,7 +10,7 @@ const authConfig = require('../authConfig/auth');
 const util = new Util_1.default();
 class AuthController {
     static async signIn(req, res) {
-        let { user_email, password_email } = req.body;
+        let { user_email, user_password } = req.body;
         User.findOne({
             where: {
                 user_email: user_email
@@ -21,7 +21,7 @@ class AuthController {
                 return util.send(res);
             }
             else {
-                if (user.contraseña_usuario == password_email) {
+                if (user.user_password == user_password) {
                     let token = jwt.sign({ user: user }, authConfig.secret, {
                         expiresIn: authConfig.expires
                     });
