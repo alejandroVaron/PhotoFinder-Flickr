@@ -50,8 +50,8 @@ class SearchHistoryService {
     }
     static async getSearchHistoryById(id) {
         try {
-            const returnedSearchHistory = await SearchHistory.findOne({
-                where: { id_searchHistory: Number(id) }
+            const returnedSearchHistory = await SearchHistory.findAll({
+                where: { id_user: Number(id) }
             });
             return returnedSearchHistory;
         }

@@ -15,7 +15,7 @@ module.exports = (req, res, next) => {
     let token = req.headers.authorization.split(" ")[1];
     jsonwebtoken_1.default.verify(token, config.key, (err, decoded) => {
         if (err) {
-            return res.status(500).send({
+            return res.status(400).send({
                 message: "Token decoding error"
             });
         }

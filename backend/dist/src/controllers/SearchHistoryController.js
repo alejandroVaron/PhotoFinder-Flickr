@@ -83,7 +83,7 @@ class SearchHistoryController {
         try {
             const returnedSearchHistory = await SearchHistoryServices_1.default.getSearchHistoryById(requiredSearchHistory);
             if (returnedSearchHistory) {
-                util.setSuccess(200, `Search history ${requiredSearchHistory} returned!`, returnedSearchHistory);
+                util.setSuccess(200, `Search history returned!`, returnedSearchHistory);
             }
             else {
                 util.setSuccess(204, `Could not found Search history ${requiredSearchHistory}!`, "");
