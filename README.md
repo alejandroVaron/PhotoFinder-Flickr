@@ -7,6 +7,9 @@ Aplicación desplegada en heroku:
 
 https://photofinder-app-frontend.herokuapp.com/
 
+![image](https://user-images.githubusercontent.com/53543861/138326277-d8433e38-9617-419f-9285-ce77be2436c1.png)
+
+
 ***
 
 Usuarios creados de prueba: 
