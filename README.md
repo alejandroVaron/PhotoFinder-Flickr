@@ -7,6 +7,8 @@ Aplicación desplegada en heroku:
 
 https://photofinder-app-frontend.herokuapp.com/
 
+***
+
 Usuarios creados de prueba: 
 
 email = prueba@gmail.com 
