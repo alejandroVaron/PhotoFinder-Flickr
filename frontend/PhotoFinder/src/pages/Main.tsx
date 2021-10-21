@@ -35,10 +35,10 @@ const  Main: React.FC = () => {
     }, [isStart])
 
     function validateTag(){
-        setIsStart(true)
         if(tag == ""){ 
             alert("Tiene que ingresar etiquetas para realizar la búsqueda de imagenes")
         }else{
+            setIsStart(true)
             databaseController.sendSearchHistory(tag, location.state.data.tokenApi, location.state.data.id_user)
         }
     }
@@ -55,7 +55,7 @@ const  Main: React.FC = () => {
         databaseController.getSearchHistory(location.state.data.tokenApi, location.state.data.id_user).then((response: any) => {
             let message = ""
             for(let i of response.data.data){
-                message+=i.searchHistory_description+"\n"+" - "
+                message+=i.searchHistory_description+'<br/>'
             }
             alert(message)
         })
