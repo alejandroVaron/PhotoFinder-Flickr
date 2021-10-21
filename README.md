@@ -14,3 +14,6 @@ password = prueba
 
 email = admin@gmail.com
 password = admin123
+
+
+Si desea crear usuarios nuevos, puede usar el endpoint: https://photofinder-app-backend.herokuapp.com/api/signUp con param {user_email, user_password}
