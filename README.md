@@ -9,6 +9,7 @@ https://photofinder-app-frontend.herokuapp.com/
 
 ![image](https://user-images.githubusercontent.com/53543861/138326277-d8433e38-9617-419f-9285-ce77be2436c1.png)
 
+*Nota: Después de media hora de inactividad en la app, los dynos de heroku se suspenden; por lo que toca esperar unos segundos a que la app se despierte.
 
 ***
 
